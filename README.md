@@ -19,6 +19,8 @@ Library database: `~/.config/tornade/library.db` (shared with other Tornade fron
 QMAKE=/usr/lib/qt6/bin/qmake6 cargo build --release
 ```
 
+Lives in filigrane-os/fili-music; the Filigrane distribution pins a tag (`apps/fili-music/upstream`). The fili-bar menu
+(`dotfiles/config/filigrane/appmenu/fili-music.json`) and the `baladeur` bar module stay in filigrane-os/filigrane.
 `tornade-core` comes from the `expose-ffi-rust-api` branch (its FFI entry points made `pub`); move the dependency to `main`
 once merged.
 

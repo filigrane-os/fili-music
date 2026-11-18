@@ -27,7 +27,7 @@ fn main() {
     // ~/.local/state/filigrane/logs/fili-music.log keep info and above (FILI_LOG=debug for more)
     logs::init(
         "fili-music",
-        "filigrane-os/filigrane",
+        "filigrane-os/fili-music",
         option_env!("FILI_MUSIC_GIT").unwrap_or(env!("CARGO_PKG_VERSION")),
         theme::setting("debug", "incidents").as_deref() != Some("off"),
     );

@@ -7,7 +7,7 @@
 use std::{collections::HashMap, env, fmt::Display, fs, sync::OnceLock};
 
 // Catalogs compiled into the binary
-const EMBEDDED: [(&str, &str); 1] = [("fr", include_str!("../../../dotfiles/config/quickshell/i18n/fr.json"))];
+const EMBEDDED: [(&str, &str); 1] = [("fr", include_str!("../i18n/fr.json"))];
 
 static CATALOG: OnceLock<HashMap<String, String>> = OnceLock::new();
 
