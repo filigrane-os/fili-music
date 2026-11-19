@@ -97,6 +97,14 @@ pub mod qobject {
         #[qinvokable]
         #[cxx_name = "openPath"]
         fn open_path(self: &Fili, path: &QString);
+        // "Ask Rob" header button: `fili-chat here` shows the small field of Rob scoped to this application; the button
+        // shows only where `fili-chat` is installed
+        #[qinvokable]
+        #[cxx_name = "askRob"]
+        fn ask_rob(self: &Fili);
+        #[qinvokable]
+        #[cxx_name = "robAvailable"]
+        fn rob_available(self: &Fili) -> bool;
         // Debug panel: the log entries after number `since` as JSON {"seq": last number, "entries": [[level, text], ...]}
         // (level 0 debug, 1 info, 2 warning, 3 error), the file of the log, and a way to empty the panel
         #[qinvokable]
@@ -382,6 +390,18 @@ impl qobject::Fili {
 
     pub fn open_path(&self, path: &QString) {
         let _ = std::process::Command::new("xdg-open").arg(path.to_string()).spawn();
+    }
+
+    pub fn ask_rob(&self) {
+        use std::process::{Command, Stdio};
+        let child = Command::new("fili-chat").arg("here").stdin(Stdio::null()).stdout(Stdio::null()).stderr(Stdio::null()).spawn();
+        if let Ok(mut child) = child {
+            std::thread::spawn(move || child.wait());
+        }
+    }
+
+    pub fn rob_available(&self) -> bool {
+        std::env::var_os("PATH").is_some_and(|p| std::env::split_paths(&p).any(|d| d.join("fili-chat").is_file()))
     }
 
     pub fn dir_exists(&self, path: &QString) -> bool {

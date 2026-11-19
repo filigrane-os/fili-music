@@ -620,9 +620,14 @@ ApplicationWindow {
             Accessible.name: Fili.tr("Scan the library…")
             onClicked: scanner.open(false)
         }
+        RobButton {
+            id: robButton
+            visible: Fili.robAvailable()
+            anchors { right: windowButton.visible ? windowButton.left : closeButton.visible ? closeButton.left : parent.right; rightMargin: windowButton.visible || closeButton.visible ? FiliTheme.space1 : FiliTheme.margin; verticalCenter: parent.verticalCenter }
+        }
         Rectangle {
             id: search
-            anchors { right: windowButton.visible ? windowButton.left : closeButton.visible ? closeButton.left : parent.right; rightMargin: windowButton.visible || closeButton.visible ? FiliTheme.space3 : FiliTheme.margin; verticalCenter: parent.verticalCenter }
+            anchors { right: robButton.visible ? robButton.left : windowButton.visible ? windowButton.left : closeButton.visible ? closeButton.left : parent.right; rightMargin: robButton.visible || windowButton.visible || closeButton.visible ? FiliTheme.space3 : FiliTheme.margin; verticalCenter: parent.verticalCenter }
             width: 180
             height: 26
             radius: FiliTheme.radiusControl
