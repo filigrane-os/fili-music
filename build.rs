@@ -16,6 +16,7 @@ fn main() {
                 "qml/ArtistStrip.qml",
                 "qml/Carousel.qml",
                 "qml/DebugPanel.qml",
+                "qml/RobButton.qml",
                 "qml/DragArea.qml",
                 "qml/ExpandableText.qml",
                 "qml/TrackColumns.qml",
