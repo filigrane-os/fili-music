@@ -1,0 +1,19 @@
+{
+ "Add 30 random tracks": "Ajouter 30 titres au hasard",
+ "Baladeur is not running": "Baladeur n'est pas lancé",
+ "Clear the queue": "Vider la file",
+ "Filter the queue": "Filtrer la file",
+ "Next": "Suivant",
+ "Not playing": "Aucune lecture",
+ "Open Baladeur": "Ouvrir Baladeur",
+ "Play / pause": "Lecture / pause",
+ "Play or Pause": "Lecture ou pause",
+ "Previous": "Précédent",
+ "Remove from queue": "Retirer de la file",
+ "Repeat": "Répéter",
+ "Save the queue as a playlist": "Enregistrer la file comme playlist",
+ "Shuffle": "Aléatoire",
+ "The queue is empty": "La file d'attente est vide",
+ "Volume": "Volume",
+ "click: panel · middle click: play/pause · right click: menu · wheel: previous / next": "clic: panneau · clic milieu: lecture/pause · clic droit: menu · molette: précédent / suivant"
+}
