@@ -60,7 +60,7 @@ Item {
             Text {
                 x: FiliTheme.margin
                 visible: view.result.artists.length > 0
-                height: visible ? implicitHeight + FiliTheme.space3 : 0
+                bottomPadding: FiliTheme.space3
                 text: Fili.tr("Artists")
                 font.family: FiliTheme.font
                 font.pixelSize: FiliTheme.sizeSmall
@@ -104,7 +104,7 @@ Item {
             Text {
                 x: FiliTheme.margin
                 visible: view.result.albums.length > 0
-                height: visible ? implicitHeight + FiliTheme.space3 : 0
+                bottomPadding: FiliTheme.space3
                 topPadding: FiliTheme.space3
                 text: Fili.tr("Albums")
                 font.family: FiliTheme.font
