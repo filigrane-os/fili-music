@@ -2,7 +2,7 @@
 
 ## v0.2.0 (2026-11-19)
 
-- Baladeur now ships what the Filigrane shell reads in its own `shell/` folder, instead of leaving it in the distribution's repository: the `baladeur` module of the fili-bar (`shell/fili-bar/baladeur/`, with its French translations), the fallback menu of the bar (`shell/appmenu/fili-music.json`) and the brief of Rob for this application (`shell/rob/fili-music.md`). The package puts it in `/usr/share/filigrane/shell/`, `fili-bar link-system` (run at login) links it into the bar and the menus; a module, menu or brief of your own with the same name wins.
+- Everything Baladeur brings to the desktop now lives in this repository and is installed with it (`make install`): the launcher (`data/fili-music.desktop`), the icon, and what the Filigrane shell reads, in `shell/`, instead of being kept in the distribution's repository: the `baladeur` module of the fili-bar (`shell/fili-bar/baladeur/`, with its French translations), the fallback menu of the bar (`shell/appmenu/fili-music.json`) and the brief of Rob for this application (`shell/rob/fili-music.md`). The package puts it in `/usr/share/filigrane/shell/`, `fili-bar link-system` (run at login) links it into the bar and the menus; a module, menu or brief of your own with the same name wins.
 - `scripts/check-shell-menu.py` (run by the CI) checks that the bar menu agrees with the actions and shortcuts of the window.
 
 ## v0.1.1 (2026-11-19)
