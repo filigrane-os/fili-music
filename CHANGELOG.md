@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.1 (2026-11-19)
+
+- Header: an Ask Rob button (left of the window button) shows Rob's small floating field for Baladeur (`fili-chat here`).
+- Search view: no more binding loop on the height of its text.
+
 ## v0.1.0 (2026-11-18)
 
 First version in its own repository (it lived in `apps/fili-music` of filigrane-os/filigrane until then).
