@@ -1,6 +1,6 @@
 [package]
 name = "fili-music"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2024"
 description = "Baladeur (fili-music): the music player of Filigrane, a Qt Quick window on tornade-core"
 license = "GPL-3.0-or-later"
