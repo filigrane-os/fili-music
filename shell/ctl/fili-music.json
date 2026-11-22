@@ -13,14 +13,34 @@
     },
     {
       "verb": "state",
-      "args": "",
       "summary": "JSON of the state of the window",
       "reads": true
     },
     {
       "verb": "actions",
-      "args": "",
       "summary": "JSON list of the action names",
+      "reads": true
+    },
+    {
+      "verb": "queue",
+      "summary": "JSON of the play queue, numbered as play-queue-at and remove-queue-at count",
+      "reads": true
+    },
+    {
+      "verb": "tracks",
+      "args": "IDS",
+      "summary": "JSON rows of the tracks with these comma-separated ids",
+      "reads": true
+    },
+    {
+      "verb": "filter",
+      "args": "TEXT",
+      "summary": "JSON places of the library that match the text",
+      "reads": true
+    },
+    {
+      "verb": "socket",
+      "summary": "Path of the window's control socket, for a client that keeps the connection open",
       "reads": true
     }
   ],
@@ -87,13 +107,16 @@
       "keys": "Space"
     },
     {
-      "name": "play-track"
+      "name": "play-track",
+      "args": "TRACK_ID"
     },
     {
-      "name": "open-album"
+      "name": "open-album",
+      "args": "ALBUM_ID"
     },
     {
-      "name": "open-artist"
+      "name": "open-artist",
+      "args": "ARTIST_ID"
     },
     {
       "name": "next",
@@ -160,7 +183,8 @@
     },
     {
       "name": "import-playlist",
-      "label": "Import Playlist…"
+      "label": "Import Playlist…",
+      "args": "[FILE]"
     },
     {
       "name": "new-playlist",
@@ -173,7 +197,8 @@
     },
     {
       "name": "scan",
-      "label": "Scan the Library…"
+      "label": "Scan the Library…",
+      "args": "[PATH]"
     },
     {
       "name": "search",
@@ -212,16 +237,20 @@
       "keys": "Ctrl+Q"
     },
     {
-      "name": "set-volume"
+      "name": "set-volume",
+      "args": "LEVEL"
     },
     {
-      "name": "remove-queue-at"
+      "name": "remove-queue-at",
+      "args": "POSITION"
     },
     {
-      "name": "seek"
+      "name": "seek",
+      "args": "SECONDS"
     },
     {
-      "name": "play-queue-at"
+      "name": "play-queue-at",
+      "args": "POSITION"
     },
     {
       "name": "show"

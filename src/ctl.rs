@@ -111,7 +111,7 @@ pub fn client(args: &[String]) -> Result<String, String> {
         args.drain(..2);
     }
     if args.is_empty() {
-        return Err("usage: fili-music ctl [--pid PID] action NAME [ARG] | state | actions".into());
+        return Err("usage: fili-music ctl [--pid PID] action NAME [ARG] | state | actions | queue | tracks IDS | filter TEXT | socket".into());
     }
     // `socket`: where the window listens (a client that keeps the connection open, like the panel of the fili-bar)
     if args[0] == "socket" {
