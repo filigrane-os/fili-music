@@ -31,6 +31,7 @@ build:
 test:
 	$(CARGO) test --release --locked
 	python3 -I scripts/check-shell-menu.py
+	python3 -I scripts/check-ctl-catalog.py
 
 install: build install-data
 	install -Dm755 $(TARGET_DIR)/release/fili-music $(DESTDIR)$(BINDIR)/fili-music
@@ -50,4 +51,4 @@ uninstall:
 	rm -f $(DESTDIR)$(DATADIR)/icons/hicolor/scalable/apps/fili-music.svg
 	rm -rf $(DESTDIR)$(DATADIR)/licenses/fili-music
 	rm -rf $(DESTDIR)$(DATADIR)/filigrane/shell/fili-bar/baladeur
-	rm -f $(DESTDIR)$(DATADIR)/filigrane/shell/appmenu/fili-music.json $(DESTDIR)$(DATADIR)/filigrane/shell/rob/fili-music.md
+	rm -f $(DESTDIR)$(DATADIR)/filigrane/shell/ctl/fili-music.json $(DESTDIR)$(DATADIR)/filigrane/shell/appmenu/fili-music.json $(DESTDIR)$(DATADIR)/filigrane/shell/rob/fili-music.md
