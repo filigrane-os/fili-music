@@ -23,5 +23,208 @@
       "summary": "JSON list of the action names",
       "reads": true
     }
+  ],
+  "actions": [
+    {
+      "name": "about",
+      "label": "About Baladeur"
+    },
+    {
+      "name": "view-search"
+    },
+    {
+      "name": "focus-filter",
+      "label": "Filter",
+      "keys": "Ctrl+F"
+    },
+    {
+      "name": "debug",
+      "label": "Debug Logs",
+      "keys": "Ctrl+Shift+L"
+    },
+    {
+      "name": "refresh",
+      "label": "Refresh Library",
+      "keys": "Ctrl+R"
+    },
+    {
+      "name": "fetch-artwork",
+      "label": "Fetch Artwork"
+    },
+    {
+      "name": "back",
+      "label": "Back",
+      "keys": "Alt+Left"
+    },
+    {
+      "name": "forward",
+      "label": "Forward",
+      "keys": "Alt+Right"
+    },
+    {
+      "name": "view-tracks",
+      "label": "Tracks",
+      "keys": "Ctrl+1"
+    },
+    {
+      "name": "view-albums",
+      "label": "Albums",
+      "keys": "Ctrl+2"
+    },
+    {
+      "name": "view-artists",
+      "label": "Artists",
+      "keys": "Ctrl+3"
+    },
+    {
+      "name": "view-genres",
+      "label": "Genres",
+      "keys": "Ctrl+4"
+    },
+    {
+      "name": "play-pause",
+      "label": "Play or Pause",
+      "keys": "Space"
+    },
+    {
+      "name": "play-track"
+    },
+    {
+      "name": "open-album"
+    },
+    {
+      "name": "open-artist"
+    },
+    {
+      "name": "next",
+      "label": "Next",
+      "keys": "Ctrl+Right"
+    },
+    {
+      "name": "prev",
+      "label": "Previous",
+      "keys": "Ctrl+Left"
+    },
+    {
+      "name": "seek-back",
+      "label": "Back 10 Seconds"
+    },
+    {
+      "name": "seek-forward",
+      "label": "Forward 10 Seconds"
+    },
+    {
+      "name": "volume-up",
+      "label": "Volume Up",
+      "keys": "Ctrl+Up"
+    },
+    {
+      "name": "volume-down",
+      "label": "Volume Down",
+      "keys": "Ctrl+Down"
+    },
+    {
+      "name": "shuffle",
+      "label": "Shuffle"
+    },
+    {
+      "name": "repeat",
+      "label": "Repeat"
+    },
+    {
+      "name": "add-random",
+      "label": "Add Random Tracks"
+    },
+    {
+      "name": "library-shuffled",
+      "label": "Play the Whole Library, Shuffled"
+    },
+    {
+      "name": "library-ordered",
+      "label": "Play the Whole Library, in Order"
+    },
+    {
+      "name": "top-up",
+      "label": "Keep the Queue Going"
+    },
+    {
+      "name": "save-queue-window"
+    },
+    {
+      "name": "save-queue",
+      "label": "Save as Playlist…"
+    },
+    {
+      "name": "clear-queue",
+      "label": "Clear the Queue"
+    },
+    {
+      "name": "import-playlist",
+      "label": "Import Playlist…"
+    },
+    {
+      "name": "new-playlist",
+      "label": "New Playlist…",
+      "keys": "Ctrl+N"
+    },
+    {
+      "name": "edit-metadata",
+      "label": "Edit Metadata of the Current Track…"
+    },
+    {
+      "name": "scan",
+      "label": "Scan the Library…"
+    },
+    {
+      "name": "search",
+      "label": "Search",
+      "keys": "Ctrl+Shift+F"
+    },
+    {
+      "name": "settings",
+      "label": "Settings…"
+    },
+    {
+      "name": "toggle-header",
+      "label": "Show Header"
+    },
+    {
+      "name": "toggle-footer",
+      "label": "Show Status Bar"
+    },
+    {
+      "name": "toggle-window-buttons",
+      "label": "Show Window Buttons"
+    },
+    {
+      "name": "window-actions",
+      "label": "Window Actions…",
+      "keys": "Ctrl+Shift+W"
+    },
+    {
+      "name": "close",
+      "label": "Close",
+      "keys": "Ctrl+W"
+    },
+    {
+      "name": "quit",
+      "label": "Quit Baladeur",
+      "keys": "Ctrl+Q"
+    },
+    {
+      "name": "set-volume"
+    },
+    {
+      "name": "remove-queue-at"
+    },
+    {
+      "name": "seek"
+    },
+    {
+      "name": "play-queue-at"
+    },
+    {
+      "name": "show"
+    }
   ]
 }
