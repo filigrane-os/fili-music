@@ -1,6 +1,7 @@
 // An album in a grid: cover, title, artist (year); a click opens it, the menu is asked on right click.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: card

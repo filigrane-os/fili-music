@@ -2,6 +2,7 @@
 // or when there is none.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Rectangle {
     id: art

@@ -1,5 +1,7 @@
 // fili-music: Baladeur, the music player of Filigrane. Without arguments it opens the window (Qt Quick, like Casier); the
 // library, the playback and the queue are tornade-core's. `ctl` sends commands to an open window (menu of the fili-bar).
+use fili_ui as _;
+
 mod bridge;
 mod ctl;
 mod i18n;
@@ -103,7 +105,8 @@ mod tests {
     // A misspelled token does not fail at run time: the item just stays transparent
     #[test]
     fn every_theme_token_used_in_qml_is_defined() {
-        let defined: Vec<String> = read("qml/FiliTheme.qml")
+        let defined: Vec<String> = fs::read_to_string(env!("FILI_UI_THEME_QML"))
+            .unwrap()
             .lines()
             .filter_map(|l| l.trim().strip_prefix("readonly property "))
             .filter_map(|l| Some(l.split(':').next()?.split_whitespace().last()?.to_string()))

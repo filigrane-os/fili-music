@@ -3,6 +3,7 @@
 // (null while it loads), so the scrollbar covers the whole library and nothing jumps when pages arrive.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: grid

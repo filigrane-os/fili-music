@@ -1,6 +1,7 @@
 // Genres as cards (a mosaic of covers of the genre, its name and counts); a genre opens its albums and can be played.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: view
@@ -209,7 +210,7 @@ Item {
                                 font.pixelSize: FiliTheme.size
                                 color: FiliTheme.textSecondary
                             }
-                            TextButton { label: Fili.tr("Play all"); primary: true; onClicked: view.playAll() }
+                            FiliButton { label: Fili.tr("Play all"); primary: true; onClicked: view.playAll() }
                         }
                     }
                     Column {

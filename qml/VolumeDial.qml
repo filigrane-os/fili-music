@@ -1,6 +1,7 @@
 // Round volume control: 40 ticks on a 270 degree arc, the volume in the middle; drag around it or use the wheel.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: dial

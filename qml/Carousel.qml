@@ -2,6 +2,7 @@
 // Takes no room when empty. `card` is the delegate; it receives `modelData`.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: car
@@ -54,13 +55,13 @@ Item {
         height: head.height
         visible: car.paged
         spacing: FiliTheme.space1
-        IconButton {
+        FiliIconButton {
             glyph: ""
             enabledState: row.contentX > 0
             onClicked: car.go(-1)
             Accessible.name: Fili.tr("Previous")
         }
-        IconButton {
+        FiliIconButton {
             glyph: ""
             enabledState: row.contentX < row.contentWidth - row.width - 1
             onClicked: car.go(1)

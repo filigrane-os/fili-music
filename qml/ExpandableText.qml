@@ -1,6 +1,7 @@
 // Long text clamped to a few lines, with a "Show more" / "Show less" link when it does not fit.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Column {
     id: box

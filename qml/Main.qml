@@ -7,9 +7,12 @@
 import QtQuick
 import QtQuick.Controls.Basic
 import Fili.Baladeur
+import Fili.UI
 
 ApplicationWindow {
     id: win
+    // The kit reads the theme through the application's object. Evaluated first: the tokens must be right from the first binding
+    readonly property bool kitReady: { FiliHost.backend = Fili; return true; }
     // Fonts embedded in the binary: same look on every distribution
     FontLoader { id: fontText; source: "qrc:/qt/qml/Fili/Baladeur/fonts/Jost-Variable.ttf" }
     FontLoader { id: fontMono; source: "qrc:/qt/qml/Fili/Baladeur/fonts/JetBrainsMono-Variable.ttf" }
@@ -266,7 +269,7 @@ ApplicationWindow {
 
     // ---- Menus ---------------------------------------------------------------------------------------------------
     property var menuHandler: null
-    ContextMenu {
+    FiliMenu {
         id: menu
         onActivated: id => {
             if (win.menuHandler)
@@ -541,13 +544,13 @@ ApplicationWindow {
             x: FiliTheme.margin + FiliTheme.space1 + 1
             anchors.verticalCenter: parent.verticalCenter
             spacing: FiliTheme.space1
-            IconButton {
+            FiliIconButton {
                 glyph: "\uf053"
                 enabledState: win.canBack
                 onClicked: win.walk(-1)
                 Accessible.name: Fili.tr("Back")
             }
-            IconButton {
+            FiliIconButton {
                 glyph: "\uf054"
                 enabledState: win.canForward
                 onClicked: win.walk(1)
@@ -611,7 +614,7 @@ ApplicationWindow {
             Accessible.role: Accessible.Button
             Accessible.name: Fili.tr("Window")
         }
-        IconButton {
+        FiliIconButton {
             id: scanButton
             anchors { right: search.left; rightMargin: FiliTheme.space2; verticalCenter: parent.verticalCenter }
             // The library (books on a shelf), not a refresh arrow: it scans the library
@@ -620,7 +623,7 @@ ApplicationWindow {
             Accessible.name: Fili.tr("Scan the library…")
             onClicked: scanner.open(false)
         }
-        LiaButton {
+        FiliLiaButton {
             id: liaButton
             visible: Fili.liaAvailable()
             anchors { right: windowButton.visible ? windowButton.left : closeButton.visible ? closeButton.left : parent.right; rightMargin: windowButton.visible || closeButton.visible ? FiliTheme.space1 : FiliTheme.margin; verticalCenter: parent.verticalCenter }
@@ -747,7 +750,7 @@ ApplicationWindow {
                                     side.folded = next;
                                 }
                             }
-                            IconButton {
+                            FiliIconButton {
                                 id: addButton
                                 visible: group.modelData.add
                                 anchors { right: parent.right; rightMargin: FiliTheme.space2; bottom: parent.bottom; bottomMargin: (FiliTheme.sideRowHeight - height) / 2 }
@@ -1074,13 +1077,13 @@ ApplicationWindow {
                 font.pixelSize: FiliTheme.sizeSmall
                 color: FiliTheme.text
             }
-            TextButton {
+            FiliButton {
                 id: cancelButton
                 anchors { right: okButton.left; rightMargin: FiliTheme.space1; verticalCenter: parent.verticalCenter }
                 label: Fili.tr("Cancel")
                 onClicked: win.confirm = null
             }
-            TextButton {
+            FiliButton {
                 id: okButton
                 anchors { right: parent.right; rightMargin: FiliTheme.margin - FiliTheme.space3; verticalCenter: parent.verticalCenter }
                 label: win.confirm ? win.confirm.label : ""
@@ -1129,13 +1132,13 @@ ApplicationWindow {
     }
 
     // ---- Debug panel: the log of the application, a band above the footer -----------------------------------------------
-    DebugPanel {
+    FiliDebugPanel {
         id: debug
         anchors { bottom: statusbar.top; left: parent.left; right: parent.right }
     }
 
     // ---- Window actions, dialogs, About ---------------------------------------------------------------------------
-    WindowPanel {
+    FiliWindowPanel {
         id: windowPanel
         anchorRight: width - (toolbar.height - closeButton.height) / 2
         anchorTop: toolbar.height + 1
@@ -1147,7 +1150,9 @@ ApplicationWindow {
         property var ids: []
         property int target: -1
         property string payload: ""
-        onAccepted: (text, choiceId) => {
+        onAccepted: {
+            const text = value;
+            const choiceId = choice;
             if (mode === "export") {
                 const file = text.trim();
                 if (Fili.writeText(file, payload))

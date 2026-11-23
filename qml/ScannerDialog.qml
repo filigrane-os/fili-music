@@ -3,6 +3,7 @@
 // library is empty), from the sidebar and from the menu.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Rectangle {
     id: dlg
@@ -287,7 +288,7 @@ Rectangle {
                     color: FiliTheme.textSecondary
                 }
             }
-            TextButton {
+            FiliButton {
                 id: doneButton
                 anchors { right: parent.right; rightMargin: FiliTheme.space4; verticalCenter: parent.verticalCenter }
                 label: dlg.welcome ? Fili.tr("Later") : Fili.tr("Done")
@@ -332,7 +333,7 @@ Rectangle {
                                     { name: Fili.tr("Documents"), path: home + "/Documents" }
                                 ].filter(f => Fili.dirExists(f.path));
                             }
-                            TextButton {
+                            FiliButton {
                                 required property var modelData
                                 label: modelData.name
                                 enabled: !dlg.scanning
@@ -364,7 +365,7 @@ Rectangle {
                     }
                     Row {
                         spacing: FiliTheme.space3
-                        TextButton {
+                        FiliButton {
                             id: importButton
                             label: Fili.tr("Import")
                             enabled: m3u.text.trim() !== ""
@@ -398,7 +399,7 @@ Rectangle {
                             visible: dlg.artDone && dlg.artProgress.totalItems === 0
                             text: Fili.tr("Nothing new to fetch: the albums and artists still without a cover were already tried.")
                         }
-                        TextButton {
+                        FiliButton {
                             visible: dlg.artDone && dlg.artProgress.totalItems === 0
                             label: Fili.tr("Everything again")
                             onClicked: dlg.fetchArtwork(true)
@@ -414,43 +415,43 @@ Rectangle {
                     Flow {
                         width: parent.width
                         spacing: FiliTheme.space2
-                        TextButton {
+                        FiliButton {
                             visible: !dlg.fetching && !dlg.artAsk
                             label: Fili.tr("Fetch artwork")
                             onClicked: dlg.artAsk = true
                         }
-                        TextButton {
+                        FiliButton {
                             visible: !dlg.fetching && dlg.artAsk
                             label: Fili.tr("New covers only")
                             primary: true
                             onClicked: dlg.fetchArtwork(false)
                         }
-                        TextButton {
+                        FiliButton {
                             visible: !dlg.fetching && dlg.artAsk
                             label: Fili.tr("Everything again")
                             onClicked: dlg.fetchArtwork(true)
                         }
-                        TextButton {
+                        FiliButton {
                             visible: !dlg.fetching && dlg.artAsk
                             label: Fili.tr("Artists only")
                             onClicked: dlg.fetchArtwork(true, true)
                         }
-                        TextButton {
+                        FiliButton {
                             visible: !dlg.fetching && dlg.artAsk
                             label: Fili.tr("Cancel")
                             onClicked: dlg.artAsk = false
                         }
-                        TextButton {
+                        FiliButton {
                             visible: dlg.fetching
                             label: Fili.tr("Cancel")
                             onClicked: dlg.cancelArtwork()
                         }
-                        TextButton {
+                        FiliButton {
                             visible: !dlg.fetching && !dlg.artAsk
                             label: Fili.tr("Artist photos")
                             onClicked: dlg.fetchArtwork(true, true)
                         }
-                        TextButton {
+                        FiliButton {
                             visible: !dlg.fetching && !dlg.artAsk && dlg.missing === null
                             label: Fili.tr("Albums without a cover")
                             onClicked: dlg.loadMissing()
@@ -491,19 +492,19 @@ Rectangle {
                     }
                     Row {
                         spacing: FiliTheme.space2
-                        TextButton {
+                        FiliButton {
                             visible: dlg.reportFile !== ""
                             label: Fili.tr("Open the last report")
                             onClicked: Fili.openPath(dlg.reportFile)
                         }
-                        TextButton {
+                        FiliButton {
                             visible: !dlg.fetching && dlg.missing !== null && dlg.missing.length > 0
                             label: Fili.tr("Try the missing covers again")
                             primary: true
                             // The core marks every failed album (a 503 of MusicBrainz too) as attempted and skips it unless forced
                             onClicked: dlg.fetchArtwork(true)
                         }
-                        TextButton { label: Fili.tr("Refresh"); onClicked: dlg.loadMissing() }
+                        FiliButton { label: Fili.tr("Refresh"); onClicked: dlg.loadMissing() }
                     }
                 }
                 // Cleanup
@@ -513,7 +514,7 @@ Rectangle {
                     Note { text: Fili.tr("Removes the albums and artists that no longer have any track.") }
                     Row {
                         spacing: FiliTheme.space3
-                        TextButton {
+                        FiliButton {
                             id: cleanButton
                             label: Fili.tr("Clean up")
                             onClicked: {
@@ -541,7 +542,7 @@ Rectangle {
                     border.color: FiliTheme.danger
                     Heading { text: Fili.tr("Something went wrong"); color: FiliTheme.danger }
                     Note { text: dlg.error }
-                    TextButton { label: Fili.tr("Dismiss"); onClicked: dlg.error = "" }
+                    FiliButton { label: Fili.tr("Dismiss"); onClicked: dlg.error = "" }
                 }
                 // Statistics
                 Block {
@@ -584,7 +585,7 @@ Rectangle {
                 font.pixelSize: FiliTheme.sizeSmall
                 color: FiliTheme.textSecondary
             }
-            TextButton {
+            FiliButton {
                 id: scanButton
                 anchors { right: parent.right; rightMargin: FiliTheme.space4; verticalCenter: parent.verticalCenter }
                 label: dlg.scanning ? Fili.tr("Scanning…") : Fili.tr("Scan")

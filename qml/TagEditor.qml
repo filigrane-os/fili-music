@@ -4,6 +4,7 @@
 // the audio files too. The core does the work (update_*_metadata, write_*_file_tags, scrape_*, set_*_artwork_*).
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Rectangle {
     id: ed
@@ -427,8 +428,8 @@ Rectangle {
                         }
                         Row {
                             spacing: FiliTheme.space1
-                            TextButton { label: Fili.tr("Find online"); onClicked: ed.scrapeArtwork() }
-                            TextButton {
+                            FiliButton { label: Fili.tr("Find online"); onClicked: ed.scrapeArtwork() }
+                            FiliButton {
                                 label: Fili.tr("Remove")
                                 onClicked: {
                                     ed.artRemoved = true;
@@ -514,7 +515,7 @@ Rectangle {
                         suggestions: ed.suggestions.genre
                         onSubmitted: ed.addGenre()
                     }
-                    TextButton { id: addGenre; anchors.verticalCenter: parent.verticalCenter; label: Fili.tr("Add"); onClicked: ed.addGenre() }
+                    FiliButton { id: addGenre; anchors.verticalCenter: parent.verticalCenter; label: Fili.tr("Add"); onClicked: ed.addGenre() }
                 }
 
                 // Scrape
@@ -522,7 +523,7 @@ Rectangle {
                     visible: !ed.isMulti
                     height: visible ? 30 : 0
                     spacing: FiliTheme.space3
-                    TextButton { label: Fili.tr("Scrape metadata"); onClicked: ed.scrape() }
+                    FiliButton { label: Fili.tr("Scrape metadata"); onClicked: ed.scrape() }
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
                         text: ed.scrapeError
@@ -554,8 +555,8 @@ Rectangle {
                 id: buttons
                 anchors { right: parent.right; rightMargin: FiliTheme.space4; verticalCenter: parent.verticalCenter }
                 spacing: FiliTheme.space1
-                TextButton { label: Fili.tr("Cancel"); onClicked: if (!ed.busy) ed.close() }
-                TextButton { label: Fili.tr("Save"); primary: true; onClicked: if (!ed.busy) ed.save() }
+                FiliButton { label: Fili.tr("Cancel"); onClicked: if (!ed.busy) ed.close() }
+                FiliButton { label: Fili.tr("Save"); primary: true; onClicked: if (!ed.busy) ed.save() }
             }
         }
 
@@ -625,7 +626,7 @@ Rectangle {
                 height: 44
                 color: FiliTheme.backgroundDeep
                 Rectangle { width: parent.width; height: FiliTheme.borderWidth; color: FiliTheme.border }
-                TextButton {
+                FiliButton {
                     anchors { right: parent.right; rightMargin: FiliTheme.space4; verticalCenter: parent.verticalCenter }
                     label: Fili.tr("Cancel")
                     onClicked: ed.picking = false
@@ -664,12 +665,12 @@ Rectangle {
                 Row {
                     anchors.right: parent.right
                     spacing: FiliTheme.space2
-                    TextButton {
+                    FiliButton {
                         visible: ed.writeErrors.length === 0
                         label: Fili.tr("Skip")
                         onClicked: ed.close()
                     }
-                    TextButton {
+                    FiliButton {
                         label: ed.writeErrors.length > 0 ? Fili.tr("OK") : Fili.tr("Write to file")
                         primary: true
                         onClicked: ed.writeErrors.length > 0 ? ed.close() : ed.writeFiles()

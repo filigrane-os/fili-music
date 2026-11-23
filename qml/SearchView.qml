@@ -1,6 +1,7 @@
 // Search results (full text): artists, albums and tracks of the library for what is typed in the header.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: view
@@ -146,8 +147,8 @@ Item {
                 Row {
                     anchors { right: parent.right; rightMargin: FiliTheme.margin; bottom: parent.bottom }
                     spacing: FiliTheme.space2
-                    TextButton { label: Fili.tr("Play all"); primary: true; onClicked: Store.playNow(Store.ids(tracks), 0) }
-                    TextButton { label: Fili.tr("Add all to queue"); onClicked: Store.addToQueue(Store.ids(tracks)) }
+                    FiliButton { label: Fili.tr("Play all"); primary: true; onClicked: Store.playNow(Store.ids(tracks), 0) }
+                    FiliButton { label: Fili.tr("Add all to queue"); onClicked: Store.addToQueue(Store.ids(tracks)) }
                 }
             }
             TrackTable {

@@ -1,6 +1,7 @@
 // The albums of the library as a grid of covers; an album opens its page. One cell per album, pages of 60 read as the cells are drawn.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: view
