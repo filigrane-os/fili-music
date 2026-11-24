@@ -2,6 +2,7 @@
 // Takes no room when the list is empty.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: strip

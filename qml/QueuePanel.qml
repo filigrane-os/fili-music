@@ -2,6 +2,7 @@
 // queue actions (random tracks, repeat, shuffle, save as playlist, clear).
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: panel
@@ -166,56 +167,15 @@ Item {
         }
     }
 
-    // Filter
-    Rectangle {
+    // Filter (the list's own field takes the "focus-filter" action)
+    FilterBar {
         id: filterBar
         visible: !panel.empty
         width: parent.width
         height: visible ? 36 : 0
-        color: FiliTheme.background
-        Rectangle {
-            anchors.bottom: parent.bottom
-            width: parent.width
-            height: FiliTheme.borderWidth
-            color: FiliTheme.border
-        }
-        Text {
-            id: lens
-            x: FiliTheme.space3
-            anchors.verticalCenter: parent.verticalCenter
-            text: ""
-            font.family: FiliTheme.icons
-            font.pixelSize: 13
-            color: FiliTheme.muted
-        }
-        Text {
-            anchors { left: lens.right; leftMargin: FiliTheme.space2; verticalCenter: parent.verticalCenter }
-            visible: filterInput.text === ""
-            text: Fili.tr("Filter the queue")
-            font.family: FiliTheme.font
-            font.pixelSize: FiliTheme.size
-            color: FiliTheme.muted
-        }
-        TextInput {
-            id: filterInput
-            anchors { left: lens.right; leftMargin: FiliTheme.space2; right: clear.left; rightMargin: FiliTheme.space2; verticalCenter: parent.verticalCenter }
-            clip: true
-            font.family: FiliTheme.font
-            font.pixelSize: FiliTheme.size
-            color: FiliTheme.text
-            onTextChanged: panel.filter = text.toLowerCase()
-            Keys.onEscapePressed: text = ""
-        }
-        Text {
-            id: clear
-            anchors { right: parent.right; rightMargin: FiliTheme.space3; verticalCenter: parent.verticalCenter }
-            visible: filterInput.text !== ""
-            text: "×"
-            font.family: FiliTheme.font
-            font.pixelSize: 16
-            color: FiliTheme.muted
-            MouseArea { anchors.fill: parent; onClicked: filterInput.text = "" }
-        }
+        placeholder: Fili.tr("Filter the queue")
+        takesFocusAction: false
+        onTextChanged: panel.filter = text.toLowerCase()
     }
 
     // Empty queue

@@ -1,6 +1,7 @@
 // Bottom of the player panel: cover, what plays, volume dial, transport buttons and the progress bar.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Rectangle {
     id: controls

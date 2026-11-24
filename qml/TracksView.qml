@@ -1,6 +1,7 @@
 // All the tracks of the library, 100 at a time as the list is scrolled, sortable, with a filter (full-text search).
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: view

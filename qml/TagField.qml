@@ -2,6 +2,7 @@
 // while typing. `text` is read and set directly; `mixed` shows "Mixed" as a placeholder (several tracks with different values).
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: field

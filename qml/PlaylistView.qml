@@ -1,6 +1,7 @@
 // One playlist: its name, play / queue / rename / delete, and its tracks (a track leaves it from the menu).
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: view
@@ -86,11 +87,11 @@ Item {
         Row {
             anchors { left: parent.left; leftMargin: FiliTheme.margin; bottom: parent.bottom; bottomMargin: FiliTheme.space2 }
             spacing: FiliTheme.space2
-            TextButton { label: Fili.tr("Play"); primary: true; onClicked: Store.playNow(Store.ids(tracks), 0) }
-            TextButton { label: Fili.tr("Add to queue"); onClicked: Store.addToQueue(Store.ids(tracks)) }
-            TextButton { label: Fili.tr("Export as M3U…"); enabled: tracks.count > 0; onClicked: view.exportRequested(view.playlist, view.m3u()) }
-            TextButton { label: Fili.tr("Rename…"); onClicked: view.renameRequested(view.playlist) }
-            TextButton { label: Fili.tr("Delete"); onClicked: view.deleteRequested(view.playlist) }
+            FiliButton { label: Fili.tr("Play"); primary: true; onClicked: Store.playNow(Store.ids(tracks), 0) }
+            FiliButton { label: Fili.tr("Add to queue"); onClicked: Store.addToQueue(Store.ids(tracks)) }
+            FiliButton { label: Fili.tr("Export as M3U…"); enabled: tracks.count > 0; onClicked: view.exportRequested(view.playlist, view.m3u()) }
+            FiliButton { label: Fili.tr("Rename…"); onClicked: view.renameRequested(view.playlist) }
+            FiliButton { label: Fili.tr("Delete"); onClicked: view.deleteRequested(view.playlist) }
         }
     }
     TrackTable {

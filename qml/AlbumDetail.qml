@@ -5,6 +5,7 @@
 import QtQuick
 import QtQuick.Shapes
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: detail
@@ -170,9 +171,9 @@ Item {
                 Flow {
                     width: parent.width
                     spacing: FiliTheme.space2
-                    TextButton { label: Fili.tr("Play"); primary: true; onClicked: Store.playNow(Store.ids(tracks), 0) }
-                    TextButton { label: Fili.tr("Add to queue"); onClicked: Store.addToQueue(Store.ids(tracks)) }
-                    TextButton { label: Fili.tr("Edit metadata…"); onClicked: Store.tagEditorRequested("album", [detail.album.id]) }
+                    FiliButton { label: Fili.tr("Play"); primary: true; onClicked: Store.playNow(Store.ids(tracks), 0) }
+                    FiliButton { label: Fili.tr("Add to queue"); onClicked: Store.addToQueue(Store.ids(tracks)) }
+                    FiliButton { label: Fili.tr("Edit metadata…"); onClicked: Store.tagEditorRequested("album", [detail.album.id]) }
                 }
                 TrackColumns {
                     id: table

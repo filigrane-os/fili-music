@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.3.1 (2026-11-23)
+
+- The interface controls come from the shared kit `fili-ui` (v0.3.0) instead of local copies: theme, focus ring, kinetic scroll, window glyph, buttons, menu, window panel, debug panel, Lia button, dialogs (new playlist, rename, import, export, welcome) and the filter field.
+- The list and queue filters are the kit's text field (boxed, with a clear button); the new-playlist prompt no longer pre-selects the existing text.
+- `scripts/check-i18n.py` (run by `make test`) checks the French catalog against the texts of the code and of the kit.
+
 ## v0.3.0 (2026-11-22)
 
 - The assistant is now named Lia: the header button and the menu entry say "Ask Lia", and the hidden brief is `shell/lia/<app_id>.md` (the older `rob/` is still read).

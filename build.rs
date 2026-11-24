@@ -2,6 +2,10 @@
 use cxx_qt_build::{CxxQtBuilder, QmlFile, QmlModule};
 
 fn main() {
+    // Tokens of the shared kit (Fili.UI), for the test that checks the FiliTheme.* names used in the QML
+    if let Ok(p) = std::env::var("DEP_FILI_UI_THEME_QML") {
+        println!("cargo::rustc-env=FILI_UI_THEME_QML={p}");
+    }
     // Version of the About card: tag or commit of the repository (absent outside a repository)
     if let Ok(o) = std::process::Command::new("git").args(["describe", "--tags", "--always", "--dirty"]).output()
         && o.status.success()
@@ -15,8 +19,6 @@ fn main() {
                 "qml/AmbientColor.qml",
                 "qml/ArtistStrip.qml",
                 "qml/Carousel.qml",
-                "qml/DebugPanel.qml",
-                "qml/LiaButton.qml",
                 "qml/DragArea.qml",
                 "qml/ExpandableText.qml",
                 "qml/TrackColumns.qml",
@@ -26,13 +28,8 @@ fn main() {
                 "qml/AlbumsView.qml",
                 "qml/ArtistsView.qml",
                 "qml/Artwork.qml",
-                "qml/ContextMenu.qml",
-                "qml/FiliScrollBar.qml",
                 "qml/FilterBar.qml",
-                "qml/FocusRing.qml",
                 "qml/GenresView.qml",
-                "qml/IconButton.qml",
-                "qml/KineticScroll.qml",
                 "qml/Main.qml",
                 "qml/PlayerControls.qml",
                 "qml/PlaylistView.qml",
@@ -40,17 +37,14 @@ fn main() {
                 "qml/QueuePanel.qml",
                 "qml/ScannerDialog.qml",
                 "qml/SearchView.qml",
-                "qml/TextButton.qml",
                 "qml/TagField.qml",
                 "qml/TagEditor.qml",
                 "qml/TrackTable.qml",
                 "qml/TracksView.qml",
                 "qml/VolumeDial.qml",
-                "qml/WindowGlyph.qml",
-                "qml/WindowPanel.qml",
             ])
-            .qml_file(QmlFile::from("qml/FiliTheme.qml").singleton(true))
             .qml_file(QmlFile::from("qml/Store.qml").singleton(true))
+            .depend("Fili.UI")
             .depend("QtQuick")
             .depend("QtQuick.Controls"),
     )

@@ -2,6 +2,7 @@
 // plays, right click asks for a menu. Rows come from a ListModel filled by Store.fill().
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: table

@@ -1,5 +1,7 @@
 // fili-music: Baladeur, the music player of Filigrane. Without arguments it opens the window (Qt Quick, like Casier); the
 // library, the playback and the queue are tornade-core's. `ctl` sends commands to an open window (menu of the fili-bar).
+use fili_ui as _;
+
 mod bridge;
 mod ctl;
 mod i18n;
@@ -84,8 +86,16 @@ fn main() {
     // Wayland app-id (niri rules, fili-music.desktop)
     QGuiApplication::set_desktop_file_name(&QString::from("fili-music"));
     let mut engine = QQmlApplicationEngine::new();
-    if let Some(engine) = engine.as_mut() {
-        engine.load(&QUrl::from("qrc:/qt/qml/Fili/Baladeur/qml/Main.qml"));
+    if let Some(mut engine) = engine.as_mut() {
+        // Development (`make run`): the QML is read from the source folders instead of the binary, so a change of a .qml file
+        // needs no build. FILI_QML_DIR holds Main.qml; FILI_UI_QML the kit's folder, searched before the compiled-in Fili.UI.
+        if let Ok(dir) = std::env::var("FILI_UI_QML") {
+            engine.as_mut().add_import_path(&QString::from(&dir));
+        }
+        match std::env::var("FILI_QML_DIR") {
+            Ok(dir) => engine.load(&QUrl::from(&format!("file://{dir}/Main.qml"))),
+            Err(_) => engine.load(&QUrl::from("qrc:/qt/qml/Fili/Baladeur/qml/Main.qml")),
+        }
     }
     if let Some(app) = app.as_mut() {
         std::process::exit(app.exec());
@@ -103,7 +113,8 @@ mod tests {
     // A misspelled token does not fail at run time: the item just stays transparent
     #[test]
     fn every_theme_token_used_in_qml_is_defined() {
-        let defined: Vec<String> = read("qml/FiliTheme.qml")
+        let defined: Vec<String> = fs::read_to_string(env!("FILI_UI_THEME_QML"))
+            .unwrap()
             .lines()
             .filter_map(|l| l.trim().strip_prefix("readonly property "))
             .filter_map(|l| Some(l.split(':').next()?.split_whitespace().last()?.to_string()))

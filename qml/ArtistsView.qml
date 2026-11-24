@@ -1,6 +1,7 @@
 // Artists: a list on the left, the chosen artist on the right (photo, facts, biography, albums, play all).
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: view
@@ -254,7 +255,7 @@ Item {
                             Item { width: 1; height: FiliTheme.space1 }
                             Row {
                                 spacing: FiliTheme.space2
-                                TextButton { label: Fili.tr("Play all"); primary: true; onClicked: view.playAll() }
+                                FiliButton { label: Fili.tr("Play all"); primary: true; onClicked: view.playAll() }
                             }
                         }
                     }

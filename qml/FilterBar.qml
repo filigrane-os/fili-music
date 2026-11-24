@@ -1,12 +1,15 @@
-// Filter field at the top of a list: lens, placeholder, a × that clears it (Esc too).
+// Filter field at the top of a list: the kit's FiliTextField (placeholder, a × that clears it, Esc too) in a bar, focused by
+// the "focus-filter" action.
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Rectangle {
     id: bar
     property string placeholder
-    property alias text: input.text
-    property alias input: input
+    property alias text: field.text
+    // Only one bar answers the "focus-filter" action
+    property bool takesFocusAction: true
     height: 36
     color: FiliTheme.background
     Rectangle {
@@ -18,49 +21,14 @@ Rectangle {
     Connections {
         target: Store
         function onFocusFilter() {
-            if (bar.visible && bar.height > 0)
-                input.forceActiveFocus();
+            if (bar.takesFocusAction && bar.visible && bar.height > 0)
+                field.focusField();
         }
     }
-    Text {
-        id: lens
-        x: FiliTheme.margin
-        anchors.verticalCenter: parent.verticalCenter
-        text: ""
-        font.family: FiliTheme.icons
-        font.pixelSize: 13
-        color: FiliTheme.muted
-    }
-    Text {
-        anchors { left: lens.right; leftMargin: FiliTheme.space2; verticalCenter: parent.verticalCenter }
-        visible: input.text === ""
-        text: bar.placeholder
-        font.family: FiliTheme.font
-        font.pixelSize: FiliTheme.size
-        color: FiliTheme.muted
-    }
-    TextInput {
-        id: input
-        anchors { left: lens.right; leftMargin: FiliTheme.space2; right: clear.left; rightMargin: FiliTheme.space2; verticalCenter: parent.verticalCenter }
-        clip: true
-        font.family: FiliTheme.font
-        font.pixelSize: FiliTheme.size
-        color: FiliTheme.text
-        selectionColor: FiliTheme.surfaceActive
-        selectedTextColor: FiliTheme.text
-        Keys.onEscapePressed: text = ""
-        Accessible.name: bar.placeholder
-    }
-    Text {
-        id: clear
-        anchors { right: parent.right; rightMargin: FiliTheme.margin; verticalCenter: parent.verticalCenter }
-        visible: input.text !== ""
-        text: "×"
-        font.family: FiliTheme.font
-        font.pixelSize: 16
-        color: FiliTheme.muted
-        MouseArea { anchors { fill: parent; margins: -6 } onClicked: input.text = "" }
-        Accessible.role: Accessible.Button
-        Accessible.name: Fili.tr("Clear")
+    FiliTextField {
+        id: field
+        anchors { left: parent.left; right: parent.right; leftMargin: FiliTheme.margin; rightMargin: FiliTheme.margin; verticalCenter: parent.verticalCenter }
+        placeholder: bar.placeholder
+        clearable: true
     }
 }

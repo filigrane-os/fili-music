@@ -3,6 +3,7 @@
 // a row can be dragged to the queue. Rows come from a ListModel filled by Store.fill().
 import QtQuick
 import Fili.Baladeur
+import Fili.UI
 
 Item {
     id: cols
